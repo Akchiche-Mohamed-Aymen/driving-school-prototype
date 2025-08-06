@@ -82,6 +82,20 @@ export const showTost = (text , bg , className)=>{
     },
   ];
   
+async function createMan(){
+  const res = await axios.get("https://randomuser.me/api/")
+  const g = res.data.results[0]
+  if (g.gender !== 'female')
+    return g.login.username
+  return createMan()
+}
+ async function getComment(instructor , i){
+  const receive = await generateText(`You are a helpful assistant that acts as a student giving a personal opinion about a driving school instructor ${instructor}. Your response should sound like a learner who has taken driving sessions and is sharing honest, casual feedback about the instructor's teaching style, behavior, and effectiveness.` ,"" , 40 );
+  const text = receive[0].message.content
+  const image =  `https://randomuser.me/api/portraits/men/${i*10}.jpg`
+  const username = await createMan() 
+  return {text , username , image}
+}
   export function generateText(system , content , m = 1000) {
     return new Promise((resolve, reject) => {
       axios
@@ -101,7 +115,7 @@ export const showTost = (text , bg , className)=>{
           {
             headers: {
               Authorization:
-                "Bearer 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", // Replace with your actual OpenRouter API key
+                "Bearer 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", // Replace with your actual OpenRouter API key
               "Content-Type": "application/json",
             },
           }
@@ -113,5 +127,13 @@ export const showTost = (text , bg , className)=>{
     });
   }
   
+  export  async function getComments(instructor , n = 5){
+    const temp = []
+    for(let i = 1 ; i <= n ; i++){ 
+      const c = await getComment(instructor , i)
+      temp.push(c)
+    }
+    return temp
+  }
 
   

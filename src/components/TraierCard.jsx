@@ -77,9 +77,7 @@ export default function TrainerCard({ trainer }) {
               <i className="fa-solid fa-phone"></i> {trainer.phone}
             </p>
           </div>{" "}
-          {/*<button className={`w-44  rounded-md bg-cyan-500 transition-all duration-500 ease-in-out transform hover:bg-cyan-700 text-white  ${
-            show ? "opacity-100 scale-100 px-3 py-2 my-2" : "opacity-0 scale-90 px-0 py-0 w-0"
-          }`}>Contact</button>*/}
+       
         </div>
 
   );

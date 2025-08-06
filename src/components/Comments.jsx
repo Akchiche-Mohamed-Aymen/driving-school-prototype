@@ -1,27 +1,12 @@
 import {useState , useEffect} from "react";
 import Comment from "./Comment";
-import { generateText } from "../utils";
-import axios from "axios";
+import { getComments } from "../utils";
 import Spinner from "./Spinner";
-async function createMan(){
-  const res = await axios.get("https://randomuser.me/api/")
-  const g = res.data.results[0]
-  if (g.gender !== 'female')
-    return g.login.username
-  return createMan()
-}
 function Comments({showCmt , instructor}) {
   const [comments , setComments] = useState([])
   const [spin , setSpin] = useState(false)
   async function createComments(){
-    const temp = []
-    for(let i = 1 ; i <= 5 ; i++){
-      const receive = await generateText(`You are a helpful assistant that acts as a student giving a personal opinion about a driving school instructor ${instructor}. Your response should sound like a learner who has taken driving sessions and is sharing honest, casual feedback about the instructor's teaching style, behavior, and effectiveness.` ,"" , 40 );
-      const text = receive[0].message.content
-      const image =  `https://randomuser.me/api/portraits/men/${i*10}.jpg`
-      const username = await createMan()
-      temp.push({text , username , image})
-    }
+   const temp = await getComments(instructor)
     setSpin(false)
     setComments(temp)      
   }
