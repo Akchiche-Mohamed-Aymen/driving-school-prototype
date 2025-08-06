@@ -1,4 +1,5 @@
-function Comment({ image, username, text }) {
+function Comment({ comment}) {
+   const {image, username, text } = comment
     return (
       <div className="w-80  transform transition duration-300 hover:scale-105  h-fit bg-white rounded-xl shadow-md p-4 flex flex-col items-center justify-between text-center">
         <img

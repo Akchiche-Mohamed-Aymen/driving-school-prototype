@@ -48,7 +48,7 @@ const TrainerPage = () => {
         <h2 className="text-white font-bold">{!showCmt ?"Show" : "Hide"} Comments</h2>
         {showCmt ? <GoChevronUp color="white" size={size} onClick={()=>setShowCmt(!showCmt)}/> : <GoChevronDown color="white" size={size} onClick={()=>setShowCmt(!showCmt)}/>  }
     </div>
-    <AdminComments showCmt = {showCmt}  instructor={trainer.fullName}/>
+    <AdminComments showCmt = {showCmt}  trainer={trainer}/>
 
     </>
   );

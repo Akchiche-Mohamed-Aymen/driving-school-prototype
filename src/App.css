@@ -97,7 +97,7 @@ body{
 
 
 .modal{
-    @apply absolute left-0 top-0 h-screen w-screen flex items-center  justify-center z-30 ;
+    @apply fixed left-0 top-0 h-screen w-screen flex items-center  justify-center z-30 ;
     background-color: rgba(0, 0, 0, 0.589);
 }
 

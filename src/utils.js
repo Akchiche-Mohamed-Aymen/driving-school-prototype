@@ -115,7 +115,7 @@ async function createMan(){
           {
             headers: {
               Authorization:
-                "Bearer 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", // Replace with your actual OpenRouter API key
+                "Bearer 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", // Replace with your actual OpenRouter API key
               "Content-Type": "application/json",
             },
           }
