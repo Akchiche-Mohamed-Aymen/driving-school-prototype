@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { showTost , TIME} from "../utils";
-import Input from './Input'
+import { showTost, TIME } from "../utils";
+import uknown from '../assets/user.webp'
+import Input from "./Input";
 export default function Register() {
   const navigate = useNavigate();
-
   const [form, setForm] = useState({
     fullName: "",
     username: "",
+    image: uknown,
     password: "",
     phone: "",
     accountType: "student",
@@ -15,7 +16,6 @@ export default function Register() {
     experience: "",
     price: 400,
   });
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -39,7 +39,11 @@ export default function Register() {
         "success"
       );
       localStorage.setItem("user", JSON.stringify(form));
-      setTimeout(() => navigate(form.accountType ===  "student" ? "/student" : "/trainer"), TIME);
+      setTimeout(
+        () =>
+          navigate(form.accountType === "student" ? "/student" : "/trainer"),
+        TIME
+      );
     } else
       showTost(
         `Please Enter Your ${Object.keys(form)[exist]}`,
@@ -47,14 +51,35 @@ export default function Register() {
         "warning"
       );
   };
-
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const form = new FormData();
+    form.append("file", file);
+    form.append("upload_preset", "ecommerce");
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dhyrumptw/image/upload",
+      {
+        method: "POST",
+        body: form,
+      }
+    );
+    const data = await res.json();
+    setForm((prev) => ({ ...prev, image: data.secure_url }));
+  };
   return (
     <div className="min-h-screen flex items-center justify-center   px-4">
       <div className="form">
         <h2 className="text-2xl font-semibold mb-6 text-center text-cyan-700">
           انشاء حساب
         </h2>
-
+        {form.image && (
+          <img
+            src={form.image}
+            alt="preview"
+            className="w-32 h-32 object-cover rounded-full mx-auto"
+          />
+        )}
         <Input
           label="الاسم الكامل"
           name="fullName"
@@ -80,7 +105,13 @@ export default function Register() {
           value={form.phone}
           onChange={handleChange}
         />
-
+         <Input
+         label  = "صورة المستخدم"
+          type="file"
+          accept="image/*"
+          onChange={handleImageUpload}
+        />
+        
         <div>
           <label className="block font-medium mb-1">نوع الحساب</label>
           <select
@@ -93,6 +124,7 @@ export default function Register() {
             <option value="trainer">مدرب</option>
           </select>
         </div>
+        
 
         {form.accountType === "trainer" && (
           <>
@@ -106,7 +138,7 @@ export default function Register() {
               label="سنوات الخبرة"
               name="experience"
               type="number"
-              min = "0"
+              min="0"
               value={form.experience}
               onChange={handleChange}
             />
@@ -140,5 +172,3 @@ export default function Register() {
     </div>
   );
 }
-
-

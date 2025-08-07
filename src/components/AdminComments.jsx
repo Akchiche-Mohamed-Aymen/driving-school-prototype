@@ -19,7 +19,7 @@ const Comment = ({ comment  }) => {
   const trainer = JSON.parse(localStorage.getItem("user"))
   return (
     <>
-      <div className="flex items-start space-x-3 p-3  bg-gray-200 rounded-md mt-3">
+      <div className="flex items-start space-x-3 p-2 comment  bg-gray-200 rounded-md mt-3">
         {/* Left: Avatar */}
         <img
           src={comment.image}
@@ -34,7 +34,7 @@ const Comment = ({ comment  }) => {
         </div>
       </div>
       <p
-        className="text-gray-400 hover:text-gray-500 pt-1 cursor-pointer"
+        className="text-gray-400 comment hover:text-gray-500 pt-1 cursor-pointer"
         onClick={() => setShow(true)}
       >
         Reply
@@ -89,11 +89,11 @@ const Reply = ({ setShow , setReplies }) => {
 
 function Replies({ replies , trainer }) {
   return (
-    <div className="space-y-4 mt-2">
+    <div className="space-y-4 mt-2 px-3">
       {replies.map((reply, index) => (
         <div
           key={index}
-          className="flex items-start space-x-4 bg-gray-100 ml-5 p-2 rounded-md shadow-sm"
+          className="flex items-start space-x-4 bg-gray-100 ml-8 p-2   rounded-md shadow-sm"
         >
           {/* 👈 Image on the left */}
           <img

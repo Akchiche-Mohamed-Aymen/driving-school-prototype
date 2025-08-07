@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {showTost} from "../utils"
+import { showTost , TIME} from "../utils";
 export default function LoginPage() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ username: "", password: "" });
@@ -14,7 +14,13 @@ export default function LoginPage() {
   
   const handleNext = () => {
    if(form.username && form.password){
-    showTost( `Welcome ${form.username}` , "linear-gradient(to right, #00b09b, #96c93d)" , "success")
+    const user = JSON.parse(localStorage.getItem('user'))
+    if(user.username === form.username && form.password === user.password ){
+      showTost( `Welcome ${form.username}` , "linear-gradient(to right, #00b09b, #96c93d)" , "success")
+      setTimeout(() => navigate(user.accountType ===  "student" ? "/student" : "/trainer"), TIME);
+
+    }
+    else showTost( `Error in Your UserName Or Password` , "red" , "warning")
    }
    else if (!form.password)
     showTost( `Please Enter Your UserName` , "red" , "warning")

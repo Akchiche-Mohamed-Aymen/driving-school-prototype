@@ -94,7 +94,9 @@ body{
 @keyframes l9-2 {
     100%{transform: translateX(13px) rotate(-180deg) translateX(13px)}
 }
-
+@media (max-width : 650px) {
+  .comment{ width: 95vw; @apply mx-auto }
+}
 
 .modal{
     @apply fixed left-0 top-0 h-screen w-screen flex items-center  justify-center z-30 ;
