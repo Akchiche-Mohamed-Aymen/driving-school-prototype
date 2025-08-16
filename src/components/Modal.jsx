@@ -33,6 +33,27 @@ export default function EditTrainerModal({
     setTimeout(() => setShowModal(false), TIME);
     
   };
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const form = new FormData();
+    form.append("file", file);
+    form.append("upload_preset", "ecommerce");
+    try{
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dhyrumptw/image/upload",
+      {
+        method: "POST",
+        body: form,
+      }
+    );
+    const data = await res.json();
+    setFormData((prev) => ({ ...prev, image: data.secure_url }));
+  
+  }catch{
+    showTost("Failed to change image" , "red" , "warning")
+  }
+  };
 
   return (
     <div className="modal">
@@ -91,6 +112,13 @@ export default function EditTrainerModal({
             max="600"
           />
         </div>
+        <Input
+         label  = "Change Image Profile"
+         className='cursor-pointer'
+          type="file"
+          accept="image/*"
+          onChange={handleImageUpload}
+        />
 
         {/* Save Button */}
         <button

@@ -96,6 +96,7 @@ body{
 }
 @media (max-width : 650px) {
   .comment{ width: 95vw; @apply mx-auto }
+  .reply{ width: 85vw; @apply mr-2  }
 }
 
 .modal{

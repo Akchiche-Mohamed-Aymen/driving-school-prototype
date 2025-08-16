@@ -1,15 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { trainers } from "../utils";
+import { trainers , getRandomInt } from "../utils";
 import { IoIosStar , IoIosStarOutline } from "react-icons/io";
 import { useMemo, useState } from "react";
 import { GoChevronDown , GoChevronUp  } from "react-icons/go";
 import Chat from "./Chat"
 import Comments from "./Comments";
-function getRandomInt(min, max) {
-  min = Math.ceil(min); // Ensure min is an integer
-  max = Math.floor(max); // Ensure max is an integer
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+
 function Details() {
   const navigate = useNavigate();
   const [show , setShow]= useState(false)
@@ -26,7 +22,7 @@ function Details() {
           onClick={() => navigate(-1)}
         ></i>
         <h2 className="text-cyan-700 font-bold">{trainer.school}</h2>
-        <img src={trainer.image} className="w-12 h-12 rounded-full" />
+        <img src={JSON.parse(localStorage.getItem("user")).image} className="w-12 h-12 rounded-full" />
       </div>
       <div className="shared border-b-3  border-gray-300 rounded-md">
         <div>

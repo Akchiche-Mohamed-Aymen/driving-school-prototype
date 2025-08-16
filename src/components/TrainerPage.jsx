@@ -4,7 +4,6 @@ import { MdEdit } from "react-icons/md";
 import EditTrainerModal from './Modal'
 import { GoChevronDown , GoChevronUp  } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
-import logo from '../assets/logo.png'
 import AdminComments from './AdminComments'
 
 const TrainerPage = () => {
@@ -33,7 +32,7 @@ const TrainerPage = () => {
       </button>
 
       </div>
-      <img src={trainer.image ?? logo} alt={trainer.fullName} className="rounded-full w-32 h-32 mx-auto border-4 border-cyan-400" />
+      <img src={trainer.image} alt={trainer.fullName} className="rounded-full w-32 h-32 mx-auto border-4 border-cyan-400" />
       <div className='pl-5 my-3'>
       <h2 className="text-center text-2xl font-bold">{trainer.fullName}</h2>
       <p className="text-gray-600">@{trainer.username}</p>
