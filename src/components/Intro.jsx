@@ -1,7 +1,7 @@
 import { useEffect, useState   } from "react";
 import logo from "../assets/logo.png";
-import acc from "../assets/acce.jpg";
-import emb from "../assets/emb.jpg";
+import acc from "../assets/sign.png";
+import emb from "../assets/login.png";
 import Card from "./Card";
 
 function App() {

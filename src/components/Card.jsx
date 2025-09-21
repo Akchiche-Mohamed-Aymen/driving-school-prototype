@@ -10,7 +10,7 @@ function Card({ image, label, to }) {
       <img
         src={image}
         name="acc"
-        className="w-32 h-32 rounded-md shadow hover:shadow-cyan-300 transition"
+        className="w-32 h-32  transition"
       />
       <span>{label}</span>
     </div>
