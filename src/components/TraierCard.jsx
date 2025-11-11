@@ -64,18 +64,9 @@ export default function TrainerCard({ trainer }) {
             <h1 className="text-xl font-bold">{trainer.fullName}</h1>
             <p>@{trainer.username}</p>
             <p>
-              <i className="fa-solid fa-school-flag"></i> {trainer.school}
-            </p>
-            <p>
-              <i className="fa-regular fa-calendar-days"></i> {trainer.experience}{" "}
-              years
-            </p>
-            <p>
               <i className="fa-solid fa-money-check-dollar"></i> {trainer.price } DA
             </p>
-            <p>
-              <i className="fa-solid fa-phone"></i> {trainer.phone}
-            </p>
+        
           </div>{" "}
        
         </div>

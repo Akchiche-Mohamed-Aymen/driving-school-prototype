@@ -24,7 +24,7 @@ function App() {
         {/* AXECY text appears at logo's initial position */}
         {(
           <h1 className={`text-4xl font-bold text-cyan-800 ${moved ? "opacity-100 duration-1000" : "opacity-0"}`}>
-            AXECY
+            AXELY
           </h1>
         )}
       </div>

@@ -38,8 +38,12 @@ function Details() {
           <p>
             <i className="fa-solid fa-phone"></i> {trainer.phone}
           </p>
+          <p>
+            <i className="fa-solid fa-car-side"></i> {trainer.car.name}
+          </p>
         </div>
-        <img src={trainer.image} className="w-28 h-28 rounded-md" />
+        <img src={trainer.car.image} className="w-28 h-28 rounded-md" />
+        <img src={trainer.image} className="w-36 h-32 rounded-md" />
       </div>
       <div className="shared profile">
         <div>
