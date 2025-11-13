@@ -18,7 +18,7 @@ function App() {
         <img
           src={logo}
           alt="Logo"
-          className={`w-32 h-32 logo rounded-md`}
+          className={`w-50 h-50 logo rounded-md`}
         />
 
         {/* AXECY text appears at logo's initial position */}
